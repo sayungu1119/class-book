@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>班級電子聯絡簿</title>
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --bg-color: #F4F7F9;
+            --card-bg: #FFFFFF;
+            --text-color: #333333;
+            --accent-color: #E74C3C;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 1.5rem;
+        }
+
+        .date-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: #2C3E50;
+            border-bottom: 2px solid #EAECEE;
+            padding-bottom: 8px;
+        }
+
+        .card-title icon {
+            margin-right: 8px;
+        }
+
+        /* 每日作業清單 */
+        .homework-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .homework-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 8px 0;
+            border-bottom: 1px dashed #EAECEE;
+        }
+
+        .homework-item:last-child {
+            border-bottom: none;
+        }
+
+        .tag {
+            background: #E8F4FC;
+            color: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        /* 注意事項 */
+        .notice-list {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .notice-item {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .notice-item strong {
+            color: var(--accent-color);
+        }
+
+        /* 簽名確認區塊 */
+        .confirm-btn {
+            width: 100%;
+            background-color: #2ECC71;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .confirm-btn:hover {
+            background-color: #27AE60;
+        }
+
+        footer {
+            text-align: center;
+            color: #7F8C8D;
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 標頭區 -->
+    <header>
+        <h1>五年三班 電子聯絡簿</h1>
+        <div class="date-badge" id="current-date">載入日期中...</div>
+    </header>
+
+    <!-- 每日作業 -->
+    <div class="card">
+        <div class="card-title">?? 今日作業</div>
+        <ul class="homework-list" id="homework-container">
+            <!-- 由 JavaScript 動態生成 -->
+        </ul>
+    </div>
+
+    <!-- 重要注意事項 -->
+    <div class="card">
+        <div class="card-title">?? 重要事項通知</div>
+        <ol class="notice-list" id="notice-container">
+            <!-- 由 JavaScript 動態生成 -->
+        </ol>
+    </div>
+
+    <!-- 家長簽到互動 -->
+    <div class="card">
+        <button class="confirm-btn" onclick="markAsRead()">? 家長點擊簽到查閱</button>
+    </div>
+
+    <footer>
+        <p>如有問題請透過官方 Line 或導師電話聯繫</p>
+    </footer>
+</div>
+
+<script>
+    // 1. 設定日期
+    const today = new Date();
+    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+    document.getElementById('current-date').innerText = today.toLocaleDateString('zh-TW', dateOptions);
+
+    // 2. 每日作業資料 (老師每天更新此區塊即可)
+    const homeworkData = [
+        { subject: '國語', content: '預習第 8 課生字 + 完成甲本 P.24-26' },
+        { subject: '數學', content: '數習 P.45-47' },
+        { subject: '英語', content: '聽 CD Unit 3 朗讀 10 分鐘，並請家長簽名' },
+        { subject: '閱讀', content: '閱讀課外書 20 分鐘，填寫閱讀記錄卡' }
+    ];
+
+    // 3. 注意事項資料 (老師每天更新此區塊即可)
+    const noticeData = [
+        "明天請攜帶<strong>水彩畫具</strong>及報紙，準備美術課使用。",
+        "下週一為學校<strong>健康檢查</strong>，請穿著體育服。",
+        "請繳交戶外教育同意書及費用。"
+    ];
+
+    // 渲染作業
+    const hwContainer = document.getElementById('homework-container');
+    homeworkData.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'homework-item';
+        li.innerHTML = `<span class="tag">${item.subject}</span><span>${item.content}</span>`;
+        hwContainer.appendChild(li);
+    });
+
+    // 渲染注意事項
+    const noticeContainer = document.getElementById('notice-container');
+    noticeData.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'notice-item';
+        li.innerHTML = item;
+        noticeContainer.appendChild(li);
+    });
+
+    // 家長點擊簽到提示
+    function markAsRead() {
+        alert("已確認簽到！感謝家長的配合。");
+    }
+</script>
+
+</body>
+</html>
