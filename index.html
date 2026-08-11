@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¯Z¯Å¹q¤lÁpµ¸Ã¯</title>
+    <title>ç­ç´šé›»å­è¯çµ¡ç°¿</title>
     <style>
         :root {
             --primary-color: #4A90E2;
@@ -74,7 +74,7 @@
             margin-right: 8px;
         }
 
-        /* ¨C¤é§@·~²M³æ */
+        /* æ¯æ—¥ä½œæ¥­æ¸…å–® */
         .homework-list {
             list-style: none;
             padding: 0;
@@ -103,7 +103,7 @@
             white-space: nowrap;
         }
 
-        /* ª`·N¨Æ¶µ */
+        /* æ³¨æ„äº‹é … */
         .notice-list {
             padding-left: 20px;
             margin: 0;
@@ -118,7 +118,7 @@
             color: var(--accent-color);
         }
 
-        /* Ã±¦W½T»{°Ï¶ô */
+        /* ç°½åç¢ºèªå€å¡Š */
         .confirm-btn {
             width: 100%;
             background-color: #2ECC71;
@@ -147,60 +147,60 @@
 <body>
 
 <div class="container">
-    <!-- ¼ĞÀY°Ï -->
+    <!-- æ¨™é ­å€ -->
     <header>
-        <h1>¤­¦~¤T¯Z ¹q¤lÁpµ¸Ã¯</h1>
-        <div class="date-badge" id="current-date">¸ü¤J¤é´Á¤¤...</div>
+        <h1>äº”å¹´ä¸‰ç­ é›»å­è¯çµ¡ç°¿</h1>
+        <div class="date-badge" id="current-date">è¼‰å…¥æ—¥æœŸä¸­...</div>
     </header>
 
-    <!-- ¨C¤é§@·~ -->
+    <!-- æ¯æ—¥ä½œæ¥­ -->
     <div class="card">
-        <div class="card-title">?? ¤µ¤é§@·~</div>
+        <div class="card-title">?? ä»Šæ—¥ä½œæ¥­</div>
         <ul class="homework-list" id="homework-container">
-            <!-- ¥Ñ JavaScript °ÊºA¥Í¦¨ -->
+            <!-- ç”± JavaScript å‹•æ…‹ç”Ÿæˆ -->
         </ul>
     </div>
 
-    <!-- ­«­nª`·N¨Æ¶µ -->
+    <!-- é‡è¦æ³¨æ„äº‹é … -->
     <div class="card">
-        <div class="card-title">?? ­«­n¨Æ¶µ³qª¾</div>
+        <div class="card-title">?? é‡è¦äº‹é …é€šçŸ¥</div>
         <ol class="notice-list" id="notice-container">
-            <!-- ¥Ñ JavaScript °ÊºA¥Í¦¨ -->
+            <!-- ç”± JavaScript å‹•æ…‹ç”Ÿæˆ -->
         </ol>
     </div>
 
-    <!-- ®aªøÃ±¨ì¤¬°Ê -->
+    <!-- å®¶é•·ç°½åˆ°äº’å‹• -->
     <div class="card">
-        <button class="confirm-btn" onclick="markAsRead()">? ®aªøÂIÀ»Ã±¨ì¬d¾\</button>
+        <button class="confirm-btn" onclick="markAsRead()">? å®¶é•·é»æ“Šç°½åˆ°æŸ¥é–±</button>
     </div>
 
     <footer>
-        <p>¦p¦³°İÃD½Ğ³z¹L©x¤è Line ©Î¾É®v¹q¸ÜÁpÃ´</p>
+        <p>å¦‚æœ‰å•é¡Œè«‹é€éå®˜æ–¹ Line æˆ–å°å¸«é›»è©±è¯ç¹«</p>
     </footer>
 </div>
 
 <script>
-    // 1. ³]©w¤é´Á
+    // 1. è¨­å®šæ—¥æœŸ
     const today = new Date();
     const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
     document.getElementById('current-date').innerText = today.toLocaleDateString('zh-TW', dateOptions);
 
-    // 2. ¨C¤é§@·~¸ê®Æ (¦Ñ®v¨C¤Ñ§ó·s¦¹°Ï¶ô§Y¥i)
+    // 2. æ¯æ—¥ä½œæ¥­è³‡æ–™ (è€å¸«æ¯å¤©æ›´æ–°æ­¤å€å¡Šå³å¯)
     const homeworkData = [
-        { subject: '°ê»y', content: '¹w²ß²Ä 8 ½Ò¥Í¦r + §¹¦¨¥Ò¥» P.24-26' },
-        { subject: '¼Æ¾Ç', content: '¼Æ²ß P.45-47' },
-        { subject: '­^»y', content: 'Å¥ CD Unit 3 ®ÔÅª 10 ¤ÀÄÁ¡A¨Ã½Ğ®aªøÃ±¦W' },
-        { subject: '¾\Åª', content: '¾\Åª½Ò¥~®Ñ 20 ¤ÀÄÁ¡A¶ñ¼g¾\Åª°O¿ı¥d' }
+        { subject: 'åœ‹èª', content: 'é ç¿’ç¬¬ 8 èª²ç”Ÿå­— + å®Œæˆç”²æœ¬ P.24-26' },
+        { subject: 'æ•¸å­¸', content: 'æ•¸ç¿’ P.45-47' },
+        { subject: 'è‹±èª', content: 'è½ CD Unit 3 æœ—è®€ 10 åˆ†é˜ï¼Œä¸¦è«‹å®¶é•·ç°½å' },
+        { subject: 'é–±è®€', content: 'é–±è®€èª²å¤–æ›¸ 20 åˆ†é˜ï¼Œå¡«å¯«é–±è®€è¨˜éŒ„å¡' }
     ];
 
-    // 3. ª`·N¨Æ¶µ¸ê®Æ (¦Ñ®v¨C¤Ñ§ó·s¦¹°Ï¶ô§Y¥i)
+    // 3. æ³¨æ„äº‹é …è³‡æ–™ (è€å¸«æ¯å¤©æ›´æ–°æ­¤å€å¡Šå³å¯)
     const noticeData = [
-        "©ú¤Ñ½ĞÄâ±a<strong>¤ô±mµe¨ã</strong>¤Î³ø¯È¡A·Ç³Æ¬ü³N½Ò¨Ï¥Î¡C",
-        "¤U¶g¤@¬°¾Ç®Õ<strong>°·±dÀË¬d</strong>¡A½Ğ¬ïµÛÅé¨|ªA¡C",
-        "½ĞÃº¥æ¤á¥~±Ğ¨|¦P·N®Ñ¤Î¶O¥Î¡C"
+        "æ˜å¤©è«‹æ”œå¸¶<strong>æ°´å½©ç•«å…·</strong>åŠå ±ç´™ï¼Œæº–å‚™ç¾è¡“èª²ä½¿ç”¨ã€‚",
+        "ä¸‹é€±ä¸€ç‚ºå­¸æ ¡<strong>å¥åº·æª¢æŸ¥</strong>ï¼Œè«‹ç©¿è‘—é«”è‚²æœã€‚",
+        "è«‹ç¹³äº¤æˆ¶å¤–æ•™è‚²åŒæ„æ›¸åŠè²»ç”¨ã€‚"
     ];
 
-    // ´è¬V§@·~
+    // æ¸²æŸ“ä½œæ¥­
     const hwContainer = document.getElementById('homework-container');
     homeworkData.forEach(item => {
         const li = document.createElement('li');
@@ -209,7 +209,7 @@
         hwContainer.appendChild(li);
     });
 
-    // ´è¬Vª`·N¨Æ¶µ
+    // æ¸²æŸ“æ³¨æ„äº‹é …
     const noticeContainer = document.getElementById('notice-container');
     noticeData.forEach(item => {
         const li = document.createElement('li');
@@ -218,9 +218,9 @@
         noticeContainer.appendChild(li);
     });
 
-    // ®aªøÂIÀ»Ã±¨ì´£¥Ü
+    // å®¶é•·é»æ“Šç°½åˆ°æç¤º
     function markAsRead() {
-        alert("¤w½T»{Ã±¨ì¡I·PÁÂ®aªøªº°t¦X¡C");
+        alert("å·²ç¢ºèªç°½åˆ°ï¼æ„Ÿè¬å®¶é•·çš„é…åˆã€‚");
     }
 </script>
 
